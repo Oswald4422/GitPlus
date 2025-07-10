@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Sign In</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #b9dffe 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background decorative circles */
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            backdrop-filter: blur(10px);
+        }
+
+        .bg-circle-1 {
+            width: 600px;
+            height: 600px;
+            top: 90px;
+            left: -200px;
+            background: linear-gradient(135deg, rgba(237, 88, 126, 0.6), rgba(108, 183, 254, 0.6));
+        }
+
+        .bg-circle-2 {
+            width: 500px;
+            height: 500px;
+            bottom: -50px;
+            right: -50px;
+            background: linear-gradient(225deg, rgba(236, 72, 153,0.6), rgba(123, 187, 255, 0.6));
+        }
+
+        .bg-circle-3 {
+            width: 400px;
+            height: 400px;
+            bottom: 600px;
+            right: 0px;
+             background: linear-gradient(70deg, rgba(200, 138, 206, 0.6), rgba(147, 51, 234, 0.6));
+        }
+
+        .container {
+            background: rgba(251, 251, 251, 0.35);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tab-buttons {
+            display: flex;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .tab-btn.active {
+            background: #7c4dff;
+            color: white;
+        }
+
+        .tab-btn:not(.active) {
+            background: transparent;
+            color: #7c4dff;
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: rgba(124, 77, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #cfcece;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: #ffffff;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #7c4dff;
+            background: white;
+        }
+
+        .input-field::placeholder {
+            color: #999;
+        }
+
+        .forgot-password {
+            color: #7c4dff;
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            color: #0e0d0d;
+        }
+
+        .remember-me input {
+            width: 16px;
+            height: 16px;
+        }
+
+        .signin-btn {
+            width: 100%;
+            padding: 15px;
+            background: #7c4dff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .signin-btn:hover {
+            background: #6a3de8;
+            transform: translateY(-2px);
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 25px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .signup-link a {
+            color: #7c4dff;
+            text-decoration: none;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        .nav-footer {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-footer a {
+            color: rgba(0, 0, 0, 0.8);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-footer a:hover {
+            color: white;
+        }
+
+        .user-icon::before {
+            content: "👤";
+        }
+
+        .lock-icon::before {
+            content: "🔒";
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-circle bg-circle-1"></div>
+    <div class="bg-circle bg-circle-2"></div>
+    <div class="bg-circle bg-circle-3"></div>
+
+    <div class="container">
+        <div class="tab-buttons">
+            <button class="tab-btn active" id="signinTab">
+                <span class="user-icon"></span>
+                Sign In
+            </button>
+            <button class="tab-btn" id="signupTab">
+                <span class="user-icon"></span>
+                Sign Up
+            </button>
+        </div>
+
+        <form id="signinForm">
+            <div class="form-group">
+                <input type="text" class="input-field" placeholder="👤 Username" id="username" required>
+            </div>
+            <div class="form-group">
+                <input type="password" class="input-field" placeholder="🔒 Password" id="password" required>
+            </div>
+            <a href="#" class="forgot-password">Forgot Password?</a>
+            <div class="remember-me">
+                <input type="checkbox" id="rememberMe">
+                <label for="rememberMe">Remember Me</label>
+            </div>
+            <button type="submit" class="signin-btn">
+                <span class="lock-icon"></span>
+                Sign In
+            </button>
+        </form>
+
+        <div class="signup-link">
+            Don't have an account? <a href="signup.html" id="signupLink">Sign Up</a>
+        </div>
+    </div>
+
+    <div class="nav-footer">
+        <a href="homepage.html">Home</a>
+        <a href="#" onclick="showAlert('Blog')">Blog</a>
+        <a href="#" onclick="showAlert('Masuk Mia')">Masuk Mia</a>
+        <a href="#" onclick="showAlert('Portfolio')">Portfolio</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

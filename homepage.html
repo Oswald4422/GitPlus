@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coinco - Homepage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .logo::before {
+            content: "✈️";
+            background: #333;
+            color: white;
+            padding: 8px;
+            border-radius: 50%;
+            font-size: 0.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .help-btn {
+            background: none;
+            border: none;
+            color: #333;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .contact-btn {
+            background: #333;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #555;
+        }
+
+        /* Main Content */
+        .hero {
+            padding: 4rem 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .get-access-btn {
+            background: #ff6b35;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .get-access-btn:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+        }
+
+        .pricing {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .price-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Hero Right Side */
+        .hero-right {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image {
+            width: 40%;
+            height: 400px;
+            background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            z-index: 2;
+            object-fit: cover;
+            overflow: hidden;
+        }
+
+        .floating-element {
+            position: absolute;
+            width: 250px;
+            top: 200px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 1rem;
+            z-index: 3;
+        }
+
+        .price-tag {
+            top: -20px;
+            left: 90px;
+            width: 130px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .price-tag::before {
+            content: "💰";
+            font-size: 1.2rem;
+        }
+
+        .perfect-time {
+            top: -20px;
+            right: 840px;
+            width: 110px;
+            text-align: center;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .rating {
+            
+            right: 30px;
+            top: 100px;
+            height: 40px;
+            width: 120px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .rating::before {
+            content: "⭐";
+            font-size: 1.2rem;
+        }
+
+        .speech-bubble {
+            bottom: 50px;
+            left: -100px;
+            background: #ffeb3b;
+            color: #333;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -10px;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-left-color: #ffeb3b;
+            transform: translateY(-50%);
+        }
+
+        .stats-icon {
+            top: -20px;
+            right: 30px;
+            width: 120px;
+            height: 120px;
+            background: #333;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3.5rem;
+        }
+
+        /* Bottom Section */
+        .bottom-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+            align-items: center;
+        }
+
+        .video-section {
+            background: #d4b896;
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .video-section::before {
+            content: "NFT";
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            background: rgb(255, 255, 255);
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            font-weight: bold;
+        }
+
+        .play-btn {
+            width: 60px;
+            height: 60px;
+            background: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+
+
+        .video-text {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .team-section {
+            text-align: center;
+        }
+
+        .team-label {
+            background: #f0f0f0;
+            color: #666;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .team-avatars {
+            display: flex;
+            justify-content: center;
+            gap: -10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            background: #ddd;
+            border-radius: 50%;
+            border: 3px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            margin-left: -10px;
+            object-fit: cover;
+            overflow: hidden;
+        }
+
+        .avatar:first-child {
+            margin-left: 0;
+        }
+
+        .team-description {
+            color: #666;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .bottom-section {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                Coinco
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showAlert('Events')">Events</a></li>
+                <li><a href="#" onclick="showAlert('Speakers')">Speakers</a></li>
+                <li><a href="#" onclick="showAlert('Partners')">Partners</a></li>
+                <li><a href="#" onclick="showAlert('About Us')">About Us</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="help-btn" onclick="showAlert('Help')">Help ▼</button>
+                <button class="contact-btn" onclick="showAlert('Contact Us')">Contact Us</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>We make progress on crypto way</h1>
+                <div class="hero-actions">
+                    <button class="get-access-btn" onclick="showAlert('Get Access clicked!')">Get Access</button>
+                    <div class="pricing">
+                        <span class="price">$16.80</span>
+                        <div class="price-label">Monthly<br>Price</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-image">
+                    <img src="images/even2.avif" alt="">
+                </div>
+                <div class="floating-element price-tag">
+                    <span>$1,640 +</span>
+                </div>
+                <div class="floating-element perfect-time">
+                    IT'S<br>PERFECT<br>TIME
+                </div>
+                <div class="floating-element rating">
+                    <span>5+</span>
+                </div>
+                <div class="floating-element speech-bubble">
+                    DID YOU CATCH THAT?
+                </div>
+                <div class="floating-element stats-icon">
+                    📊
+                </div>
+            </div>
+        </section>
+
+        <section class="bottom-section">
+            <div class="video-section">
+                <div class="play-btn" onclick="showAlert('Play video')">▶</div>
+                <div class="play-btn2"></div>
+                <div class="video-text">
+                    <strong>See how it works</strong><br><br>
+                    Art is everywhere.<br>
+                    The overview.
+                </div>
+            </div>
+            <div class="team-section">
+                <div class="team-label">TEAM</div>
+                <div class="team-avatars">
+                    <div class="avatar"><img src="images/even3.avif" alt=""></div>
+                    <div class="avatar"><img src="images/even2.avif" alt=""></div>
+                    <div class="avatar"><img src="images/even1.avif" alt=""></div>
+                </div>
+                <div class="team-description">
+                    Our team is passionate about sharing their knowledge and experience with others. We are always available to offers.
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
