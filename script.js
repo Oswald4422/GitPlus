@@ -32,7 +32,7 @@ function initializePage() {
     const currentPage = window.location.pathname.split('/').pop();
     
     switch(currentPage) {
-        case 'signin.html':
+        case 'index.html':
         case '':
         case 'index.html':
             initializeSignIn();
@@ -164,7 +164,7 @@ function initializeSignUp() {
     // Handle tab navigation
     if (signinTab) {
         signinTab.addEventListener('click', function() {
-            navigateTo('signin.html');
+            navigateTo('index.html');
         });
     }
 }
@@ -174,7 +174,7 @@ function initializeHomepage() {
     // Check if user is authenticated
     if (!checkAuth()) {
         alert('Please sign in to access this page');
-        navigateTo('signin.html');
+        navigateTo('index.html');
         return;
     }
     
@@ -187,7 +187,7 @@ function initializeHomepage() {
         localStorage.removeItem('currentUser');
         localStorage.removeItem('rememberMe');
         alert('You have been logged out');
-        navigateTo('signin.html');
+        navigateTo('index.html');
     };
 }
 
@@ -198,7 +198,7 @@ function autoLogin() {
     
     if (rememberMe === 'true' && currentUser) {
         const currentPage = window.location.pathname.split('/').pop();
-        if (currentPage === 'signin.html' || currentPage === '' || currentPage === 'index.html') {
+        if (currentPage === 'index.html' || currentPage === '' || currentPage === 'index.html') {
             navigateTo('homepage.html');
         }
     }
